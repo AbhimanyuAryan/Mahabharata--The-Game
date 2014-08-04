@@ -1,0 +1,43 @@
+ # -*- coding: utf-8 -*-
+    import wx
+
+    class game(wx.Frame):
+           def __init__(self, parent,id):
+                  wx.Frame.__init__(self,parent,id, 'Abhimanyu Mahabharat: The Game', size=(1000,500))
+                  panel=wx.Panel(self)
+                  button1=wx.Button(panel, label= 'New Game', pos=(500,100), size=(100,50))
+                  button2=wx.Button(panel, label= 'Load Game' ,pos=(500,200), size=(100,50))
+                  button3=wx.Button(panel,label= 'Leader Board', pos=(500,300), size=(100,50))
+                  button4=wx.Button(panel,label= 'Exit',pos=(500,400), size=(100,50))
+
+                  self.Bind(wx.EVT_BUTTON, self.closebutton, button4)
+                  self.Bind(wx.EVT_CLOSE, self.closewindows)
+
+                  status=self.CreateStatusBar()
+
+                  menubar=wx.MenuBar()
+                  first=wx.Menu()
+                  second=wx.Menu()
+
+                  first.Append(wx.NewId(), 'Graphics' , 'change video graphic of the game')
+                  first.Append(wx.NewId(), 'Audio', 'change sound effect of the game')
+                  first.Append(wx.NewId(), 'Controls', 'change game controls')
+                  second.Append(wx.NewId(), 'Gameplay', 'Learn to play the game')
+                  second.Append(wx.NewId(), 'About', 'Know about developer and company')
+
+                  menubar.Append(first, 'Settings')
+                  menubar.Append(second, 'More')
+                  self.SetMenuBar(menubar)
+
+           def closebutton(self, event):
+                  self.Close(True)
+
+           def closewindows(self, event):
+                  self.Destroy()
+
+
+    if __name__== '__main__':
+               app= wx.PySimpleApp()
+               frame = game(parent = None, id= -1)
+               frame.Show()
+               app.MainLoop()
